@@ -15,7 +15,7 @@ public class NotificationTask {
     String message;
     LocalDateTime time;
 
-    public NotificationTask() {
+    public NotificationTask(Long chatId, String notificationText, LocalDateTime notificationDateTime) {
     }
 
     public NotificationTask(Long id, Long chatId, String message, LocalDateTime time) {
@@ -55,5 +55,8 @@ public class NotificationTask {
 
     public void setTime(LocalDateTime time) {
         this.time = time;
+    }
+
+    public Object getMessageText() {
     }
 }
