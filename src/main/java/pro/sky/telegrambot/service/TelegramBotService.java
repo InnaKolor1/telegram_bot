@@ -16,6 +16,7 @@ public class TelegramBotService {
 
     private TelegramBot bot;
 
+
     @PostConstruct
     public void init() {
         bot = new TelegramBot(botToken);

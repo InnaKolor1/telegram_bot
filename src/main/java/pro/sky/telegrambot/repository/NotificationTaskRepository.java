@@ -17,6 +17,7 @@ public interface NotificationTaskRepository extends JpaRepository<NotificationTa
     @Query("SELECT n FROM NotificationTask n WHERE n.notificationDate <= :currentTime AND n.sent = false")
     List<NotificationTask> findDueNotifications(@Param("currentTime") LocalDateTime currentTime);
 
+
     @Query("SELECT n FROM NotificationTask n WHERE n.chatId = :chatId AND n.sent = false ORDER BY n.notificationDate ASC")
     List<NotificationTask> findActiveNotificationsByChatId(@Param("chatId") Long chatId);
 }

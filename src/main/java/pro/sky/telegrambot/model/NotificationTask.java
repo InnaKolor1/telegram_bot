@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 @Table(name = "notification_task")
 public class NotificationTask {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

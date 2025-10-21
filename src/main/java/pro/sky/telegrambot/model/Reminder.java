@@ -45,6 +45,7 @@ public class Reminder {
     public LocalDateTime getReminderDate() { return reminderDate; }
     public void setReminderDate(LocalDateTime reminderDate) { this.reminderDate = reminderDate; }
 
+
     public Boolean getIsSent() { return isSent; }
     public void setIsSent(Boolean isSent) { this.isSent = isSent; }
 

@@ -10,7 +10,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 import pro.sky.telegrambot.repository.ReminderRepository;
 @Repository
-public interface ReminderRepository extends JpaRepository<Reminder, Long> {
+public interface
+ReminderRepository extends JpaRepository<Reminder, Long> {
 
     List<Reminder> findByChatId(Long chatId);
 

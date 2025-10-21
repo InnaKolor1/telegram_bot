@@ -125,6 +125,7 @@ public class TelegramBotUpdatesListener implements UpdatesListener {
                     .append("\n");
         }
 
+
         telegramBotService.sendMessage(chatId, message.toString());
     }
 

@@ -2,4 +2,5 @@
     <item name='liquibase.Scope'>
         <annotation name='java.lang.Deprecated'/>
     </item>
+
 </root>

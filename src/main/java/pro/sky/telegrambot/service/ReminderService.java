@@ -55,6 +55,7 @@ public class ReminderService {
         return notificationTaskRepository.findActiveNotificationsByChatId(chatId);
     }
 
+
     @Scheduled(cron = "0 * * * * *")
     public void checkAndSendNotifications() {
         LocalDateTime now = LocalDateTime.now().withSecond(0).withNano(0);

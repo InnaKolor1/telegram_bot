@@ -8,6 +8,7 @@ class TelegramBotApplicationTests {
 
 	@Test
 	void contextLoads() {
+
 	}
 
 }
