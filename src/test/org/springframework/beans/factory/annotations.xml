@@ -1,6 +1,5 @@
 <root>
-    <item name='liquibase.Scope'>
+    <item name='org.springframework.beans.factory.BeanCreationException'>
         <annotation name='java.lang.Deprecated'/>
     </item>
-
 </root>

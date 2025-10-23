@@ -1,7 +1,7 @@
 databaseChangeLog:
   - changeSet:
-      id: create-notification-task-table
-      author:
+      id: 001-create-notification-task-table
+      author: inna_kutsak
       changes:
         - createTable:
             tableName: notification_task
@@ -11,7 +11,6 @@ databaseChangeLog:
                   type: bigserial
                   constraints:
                     primaryKey: true
-
                     nullable: false
               - column:
                   name: chat_id
@@ -24,14 +23,14 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: notification_date
+                  name: notification_date_time
                   type: timestamp
                   constraints:
                     nullable: false
               - column:
                   name: created_at
                   type: timestamp
-                  defaultValue: now()
+                  defaultValueComputed: now()
               - column:
                   name: sent
                   type: boolean

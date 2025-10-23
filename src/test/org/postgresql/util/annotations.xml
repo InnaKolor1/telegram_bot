@@ -1,0 +1,5 @@
+<root>
+    <item name='org.postgresql.util.PSQLException'>
+        <annotation name='java.lang.Deprecated'/>
+    </item>
+</root>

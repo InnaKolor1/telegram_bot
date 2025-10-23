@@ -1,18 +1,11 @@
 package pro.sky.telegrambot.model;
 
-
-import lombok.Getter;
-
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
-
-
 
 @Entity
 @Table(name = "notification_task")
 public class NotificationTask {
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,8 +16,8 @@ public class NotificationTask {
     @Column(name = "message_text", nullable = false, columnDefinition = "TEXT")
     private String messageText;
 
-    @Column(name = "notification_date", nullable = false)
-    private LocalDateTime notificationDate;
+    @Column(name = "notification_date_time", nullable = false)
+    private LocalDateTime notificationDateTime;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt = LocalDateTime.now();
@@ -32,14 +25,19 @@ public class NotificationTask {
     @Column(name = "sent")
     private Boolean sent = false;
 
-    public NotificationTask() {
-    }
-
-    public NotificationTask(Long chatId, String messageText, LocalDateTime notificationDate) {
+    public NotificationTask(Long id, Long chatId, String messageText, LocalDateTime notificationDateTime, LocalDateTime createdAt, Boolean sent) {
+        this.id = id;
         this.chatId = chatId;
         this.messageText = messageText;
-        this.notificationDate = notificationDate;
+        this.notificationDateTime = notificationDateTime;
+        this.createdAt = createdAt;
+        this.sent = sent;
     }
+
+    public NotificationTask() {
+
+    }
+
 
     public Long getId() {
         return id;
@@ -65,12 +63,12 @@ public class NotificationTask {
         this.messageText = messageText;
     }
 
-    public LocalDateTime getNotificationDate() {
-        return notificationDate;
+    public LocalDateTime getNotificationDateTime() {
+        return notificationDateTime;
     }
 
-    public void setNotificationDate(LocalDateTime notificationDate) {
-        this.notificationDate = notificationDate;
+    public void setNotificationDateTime(LocalDateTime notificationDateTime) {
+        this.notificationDateTime = notificationDateTime;
     }
 
     public LocalDateTime getCreatedAt() {
@@ -95,7 +93,7 @@ public class NotificationTask {
                 "id=" + id +
                 ", chatId=" + chatId +
                 ", messageText='" + messageText + '\'' +
-                ", notificationDate=" + notificationDate +
+                ", notificationDateTime=" + notificationDateTime +
                 ", createdAt=" + createdAt +
                 ", sent=" + sent +
                 '}';

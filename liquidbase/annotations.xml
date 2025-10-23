@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+
+
+    <changeSet id="003-add-new-columns" author="inna_kutsak">
+        <addColumn tableName="notification_task">
+            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP"/>
+            <column name="is_active" type="BOOLEAN" defaultValueBoolean="true"/>
+        </addColumn>
+
+        <addDefaultValue tableName="notification_task" columnName="updated_at" defaultValueComputed="CURRENT_TIMESTAMP"/>
+    </changeSet>
+
+
+    <changeSet id="004-create-user-table" author="inna_kutsak">
+        <createTable tableName="bot_user">
+            <column name="id" type="BIGSERIAL">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="chat_id" type="BIGINT">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="username" type="VARCHAR(255)"/>
+            <column name="first_name" type="VARCHAR(255)"/>
+            <column name="last_name" type="VARCHAR(255)"/>
+            <column name="registered_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP"/>
+            <column name="is_active" type="BOOLEAN" defaultValueBoolean="true"/>
+        </createTable>
+
+        <addForeignKeyConstraint
+                baseTableName="notification_task"
+                baseColumnNames="chat_id"
+                constraintName="fk_notification_task_user"
+                referencedTableName="bot_user"
+                referencedColumnNames="chat_id"/>
+    </changeSet>
+
+
+    <changeSet id="005-add-additional-indexes" author="inna_kutsak">
+        <createIndex tableName="bot_user" indexName="idx_user_chat_id">
+            <column name="chat_id"/>
+        </createIndex>
+
+        <createIndex tableName="notification_task" indexName="idx_task_created_at">
+            <column name="created_at"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>
